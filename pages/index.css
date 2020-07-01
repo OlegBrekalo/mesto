@@ -1,4 +1,5 @@
 @import url('../vendor/normalize.css');
+@import url('../vendor/fonts/Inter/inter.css');
 
 @import url('../blocks/content/content.css');
 @import url('../blocks/element/element.css');
@@ -9,3 +10,5 @@
 @import url('../blocks/popup-form/popup-form.css');
 @import url('../blocks/profile/profile.css');
 @import url('../blocks/content-block/content-block.css');
+@import url('../blocks/custom-cursor/custom-cursor.css');
+@import url('../blocks/link-opacity/link-opacity.css');
