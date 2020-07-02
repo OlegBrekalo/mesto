@@ -1,7 +1,9 @@
 .elements{
-  margin-top: 51px;
+  margin-top: 50px;
+
   display: grid;
-  grid-template-columns: repeat(auto-fill, 282px);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   grid-row-gap: 21px;
   grid-column-gap: 18px;
+  justify-content: center;
 }
