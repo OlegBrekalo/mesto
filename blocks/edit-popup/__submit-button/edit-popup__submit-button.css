@@ -1,0 +1,10 @@
+.edit-popup__submit-button{
+  height: 50px;
+  background-color: black;
+  border: 0;
+  color: white;
+
+  font-size: 18px;
+  line-height: 1.05;
+  letter-spacing: 0;
+}

@@ -1,0 +1,15 @@
+.edit-popup__input-text{
+  border: 0;
+  border-bottom: 1px solid grey;
+
+  margin-bottom: 19px;
+
+  font-size: 14px;
+  line-height: 2.5;
+  padding: 1px;
+
+}
+
+.edit-popup__input-text:nth-child(2){
+  margin-bottom: 48px;
+}

@@ -1,0 +1,12 @@
+.edit-popup__close-icon{
+  position: absolute;
+  top: -45px;
+  left: 97.5%;
+
+  width: 56px;
+  height: 56px;
+  background-image: url('../../../images/close-icon.png');
+  background-position: center;
+  background-size: cover;
+  z-index: 1;
+}
