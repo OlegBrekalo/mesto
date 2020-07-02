@@ -1,0 +1,10 @@
+@import url('./__footer/element__footer.css');
+@import url('./__image/element__image.css');
+@import url('./__like-icon/element__like-icon.css');
+@import url('./__title/element__title.css');
+
+.element{
+  border-radius: 3%;
+  overflow: hidden;
+  font-size: 0;
+}
