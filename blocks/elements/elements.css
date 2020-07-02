@@ -6,8 +6,14 @@
   margin-right: auto;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
   grid-row-gap: 21px;
   grid-column-gap: 18px;
   justify-content: center;
+}
+
+@media screen and (max-width: 425px){
+  .elements{
+    margin-top: 36px;
+  }
 }

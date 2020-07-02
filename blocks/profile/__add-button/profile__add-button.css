@@ -9,7 +9,7 @@
   background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 425px){
+@media screen and (max-width: 750px){
   .profile__add-button{
     background-image: url('../../../images/add-button_mobile.png');
     width: 120%;
