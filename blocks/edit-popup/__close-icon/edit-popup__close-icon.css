@@ -10,3 +10,13 @@
   background-size: cover;
   z-index: 1;
 }
+
+@media screen and (max-width: 530px){
+  .edit-popup__close-icon{
+    width: 30px;
+    height: 30px;
+
+    top: -25px;
+    left: 97.5%;
+  }
+}

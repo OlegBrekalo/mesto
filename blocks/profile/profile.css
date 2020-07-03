@@ -19,13 +19,8 @@
   grid-column-gap: 30px;
 }
 
-/*
-Вообще нет идей куда девать кнопку добавления в промежутке от большого разрешения до мобильного
-Если оставить как есть, то она черезмерно сокрашает поле для имени
-Пока она подвешивается под аватаркой, выглядит не очень, но я не на дизайнера обучаюсь
-*/
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 930px){
   .profile{
     grid-template-columns: 120px 1fr;
     grid-template-areas:
@@ -34,6 +29,7 @@
     grid-row-gap: 10px;
   }
 }
+
 
 @media screen and (max-width: 750px){
   .profile{

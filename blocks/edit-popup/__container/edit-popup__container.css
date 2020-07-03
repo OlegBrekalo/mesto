@@ -18,3 +18,10 @@
 
   z-index: 1;
 }
+
+@media screen and (max-width: 530px){
+  .edit-popup__container{
+    width: 280px;
+    height: 250px;
+  }
+}

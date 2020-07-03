@@ -10,3 +10,10 @@
 
   margin-bottom: 36px;
 }
+
+@media screen and (max-width: 530px){
+  .edit-popup__form{
+    width: 200px;
+    margin-bottom: 20px;
+  }
+}

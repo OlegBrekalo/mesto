@@ -13,3 +13,14 @@
 .edit-popup__input-text:nth-child(2){
   margin-bottom: 48px;
 }
+
+@media screen and (max-width: 530px){
+  .edit-popup__input-text{
+    margin-bottom: 10px;
+  }
+
+  .edit-popup__input-text:nth-child(2){
+    margin-bottom: 25px;
+  }
+
+}
