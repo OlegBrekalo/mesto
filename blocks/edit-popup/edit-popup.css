@@ -1,11 +1,11 @@
 @import url('./__background/edit-popup__background.css');
 @import url('./__close-icon/edit-popup__close-icon.css');
-@import url('./__block/edit-popup__block.css');
+@import url('./__container/edit-popup__container.css');
 @import url('./__form/edit-popup__form.css');
 @import url('./__input-text/edit-popup__input-text.css');
 @import url('./__submit-button/edit-popup__submit-button.css');
 @import url('./__title/edit-popup__title.css');
 
 .edit-popup{
-  display: block;
+  display: none;
 }
