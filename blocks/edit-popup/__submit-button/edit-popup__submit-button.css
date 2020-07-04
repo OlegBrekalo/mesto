@@ -4,7 +4,14 @@
   border: 0;
   color: white;
 
+  cursor: url('../../images/bttn-cursor.png'), pointer;
+  transition: opacity 1s linear;
+
   font-size: 18px;
   line-height: 1.05;
   letter-spacing: 0;
+}
+
+.edit-popup__submit-button:hover{
+  opacity: .5;
 }

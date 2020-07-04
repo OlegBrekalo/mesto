@@ -8,19 +8,23 @@ let editPopupInputJob = document.querySelector(".edit-popup__input-text_type_job
 let editPopupForm = document.querySelector(".edit-popup__form");
 
 
-editPopupOpenBttn.addEventListener("click", function(){
-  editPopup.classList.add("edit-popup_opened");
+function editPopupDisplayToggle(){
+  editPopup.classList.toggle("edit-popup_opened");
+}
+
+function editPopupOpen(){
+  editPopupDisplayToggle();
   editPopupInputName.value = profileName.textContent;
   editPopupInputJob.value = profileJob.textContent;
-})
+}
 
-editPopupCloseBttn.addEventListener("click", function(){
-  editPopup.classList.remove("edit-popup_opened");
-})
-
-editPopupForm.addEventListener('submit', function (evt) {
+function editPopupSubmit(evt){
   evt.preventDefault();
   profileName.textContent = editPopupInputName.value;
   profileJob.textContent = editPopupInputJob.value;
-  editPopup.classList.remove("edit-popup_opened");
-});
+  editPopupDisplayToggle();
+}
+
+editPopupOpenBttn.addEventListener("click", editPopupOpen);
+editPopupCloseBttn.addEventListener("click", editPopupDisplayToggle);
+editPopupForm.addEventListener('submit', editPopupSubmit);

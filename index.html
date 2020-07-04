@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,81 +8,79 @@
 </head>
 <body class="page">
   <div class="content">
-    <header class="header">
+    <header class="header content-section">
       <img src="./images/mesto-logo.svg" alt="Место-Логотип" class="header__logo">
     </header>
     <main>
-      <section class="profile">
+      <section class="profile content-section">
         <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
         <div class="profile__profile-info">
-          <p class="profile__name">Новый путешественик</p>
-          <div class="profile__edit-button link-opacity custom-cursor"></div>
+          <h2 class="profile__name">Новый путешественик</h2>
+          <button type="button" class="profile__edit-button"></button>
           <p class="profile__job">Исследователь территорий</p>
         </div>
-        <div class="profile__add-button link-opacity custom-cursor"></div>
+        <button type="button" class="profile__add-button"></button>
       </section>
-      <section class="elements">
+      <section class="elements content-section">
         <div class="element">
-          <img src="./images/card-image_russia.jpg" alt="Озеро Гижгит" class="element__image">
+          <img src="./images/card-image_russia.jpg" alt="Озеро Гижгит." class="element__image">
           <div class="element__footer">
-            <p class="element__title" title="Гижгит, Кабардино-Балкарская Республика">Гижгит, Кабардино-Балкарская Республика</p>
-            <div class="element__like-icon"></div>
+            <h2 class="element__title" title="Гижгит, Кабардино-Балкарская Республика">Гижгит, Кабардино-Балкарская Республика</h2>
+            <button type="button" class="element__like-icon"></button>
           </div>
         </div>
         <div class="element">
-          <img src="./images/card-image_new-zealand.jpg" alt="Новая Зеландия" class="element__image">
+          <img src="./images/card-image_new-zealand.jpg" alt="Горный ледник на Южном острове Новой Зеландии." class="element__image">
           <div class="element__footer">
-            <p class="element__title" title="Южный остров, Новая Зеландия">Южный остров, Новая Зеландия</p>
-            <div class="element__like-icon"></div>
+            <h2 class="element__title" title="Южный остров, Новая Зеландия">Южный остров, Новая Зеландия</h2>
+            <button type="button" class="element__like-icon"></button>
           </div>
         </div>
         <div class="element">
-          <img src="./images/card-img_norway.jpg" alt="Место-Норвегия" class="element__image">
+          <img src="./images/card-img_norway.jpg" alt="Лофотенские острова, Норвегия." class="element__image">
           <div class="element__footer">
-            <p class="element__title" title="Лофотенские острова, Норвегия">Лофотенские острова, Норвегия</p>
-            <div class="element__like-icon"></div>
+            <h2 class="element__title" title="Лофотенские острова, Норвегия">Лофотенские острова, Норвегия</h2>
+            <button type="button" class="element__like-icon"></button>
           </div>
         </div>
         <div class="element">
-          <img src="./images/card-image_italy.jpg" alt="Место-Италия" class="element__image">
+          <img src="./images/card-image_italy.jpg" alt="Перевал Пассо Ролле, Италия." class="element__image">
           <div class="element__footer">
-            <p class="element__title" title="Пассо Ролле, Италия">Пассо Ролле, Италия</p>
-            <div class="element__like-icon"></div>
+            <h2 class="element__title" title="Пассо Ролле, Италия">Пассо Ролле, Италия</h2>
+            <button type="button" class="element__like-icon"></button>
           </div>
         </div>
         <div class="element">
-          <img src="./images/card-image_iceland.jpg" alt="Место-Исландия" class="element__image">
+          <img src="./images/card-image_iceland.jpg" alt="Водопад Сельяландсфосс, Исландия." class="element__image">
           <div class="element__footer">
-            <p class="element__title" title="Сельяландсфосс, Исландия">Сельяландсфосс, Исландия</p>
-            <div class="element__like-icon"></div>
+            <h2 class="element__title" title="Сельяландсфосс, Исландия">Сельяландсфосс, Исландия</h2>
+            <button type="button" class="element__like-icon"></button>
           </div>
         </div>
         <div class="element">
-          <img src="./images/card-image_usa.jpg" alt="Место-США" class="element__image">
+          <img src="./images/card-image_usa.jpg" alt="Горная долина Аляска, США." class="element__image">
           <div class="element__footer">
-            <p class="element__title" title="Аляска, США">Аляска, США</p>
-            <div class="element__like-icon"></div>
+            <h2 class="element__title" title="Аляска, США">Аляска, США</h2>
+            <button type="button" class="element__like-icon"></button>
           </div>
         </div>
       </section>
-      <div class="edit-popup">
-        <div class="edit-popup__background"></div>
-        <div class="edit-popup__container">
-          <div class="edit-popup__close-icon link-opacity custom-cursor"></div>
-          <p class="edit-popup__title">Редактировать профиль</p>
-          <form action="" class="edit-popup__form">
-            <input type="text" class="edit-popup__input-text edit-popup__input-text_type_name">
-            <input type="text" class="edit-popup__input-text edit-popup__input-text_type_job">
-            <button type="submit" class="edit-popup__submit-button">Сохранить</button>
-          </form>
-        </div>
-      </div>
-    </div>
     </main>
-    <footer class="footer">
+    <footer class="footer content-section">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
-  <script src="./script.js"></script>
+  <div class="edit-popup">
+    <div class="edit-popup__container">
+      <button type="button" class="edit-popup__close-icon"></button>
+      <p class="edit-popup__title">Редактировать профиль</p>
+      <form class="edit-popup__form" autocomplete="off">
+        <input type="text" name="edit-form_name" class="edit-popup__input-text edit-popup__input-text_type_name">
+        <input type="text" name="edit-form_job" class="edit-popup__input-text edit-popup__input-text_type_job">
+        <button type="submit" class="edit-popup__submit-button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>

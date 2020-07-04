@@ -1,14 +1,26 @@
 .edit-popup__close-icon{
+  border: none;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
   position: absolute;
-  top: -45px;
-  left: 97.5%;
+  top: -46px;
+  right: -45px;
+
+  cursor: url('../../images/bttn-cursor.png'), pointer;
+  transition: opacity 1s linear;
 
   width: 56px;
   height: 56px;
-  background-image: url('../../../images/close-icon.png');
+  background-image: url('../../../images/close-icon.svg');
   background-position: center;
   background-size: cover;
   z-index: 1;
+}
+
+.edit-popup__close-icon:hover{
+  opacity: .5;
 }
 
 @media screen and (max-width: 530px){

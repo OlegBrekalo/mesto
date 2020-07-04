@@ -6,10 +6,6 @@
 @import url('./__profile-info/profile__profile-info.css');
 
 .profile{
-  width: 73.5%;
-  margin-left: auto;
-  margin-right: auto;
-
   display: grid;
   grid-template-columns: 120px 1fr 150px;
   grid-template-areas:

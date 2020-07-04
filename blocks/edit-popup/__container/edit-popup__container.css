@@ -1,15 +1,11 @@
 .edit-popup__container{
   display: flex;
+  position: relative;
   flex-direction: column;
 
   justify-content: space-between;
 
-  position: fixed;
-  top: 23.1%;
-  left: 0;
-  right: 0;
   margin: 0 auto;
-
   width: 430px;
   height: 330px;
   border-radius: 3%;
