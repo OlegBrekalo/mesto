@@ -32,21 +32,34 @@ const initialCards = [
   }
 ];
 
-const elementsGrid = document.querySelector(".elements");
-const elementTemplate = document.querySelector(".template_element").content;
+function elementLikeToggle(evt){
+  evt.target.classList.toggle("element__like-icon_checked");
+}
+
+function elementMockImgOnError(evt){
+  evt.target.src = '../images/card-image_unknown.jpg';
+}
+
+function removeParent(evt){
+  evt.target.parentNode.remove();
+}
 
 function renderNewPlace(newPlace){
   const newElement = elementTemplate.cloneNode(true);
   newElement.querySelector(".element__title").textContent = newPlace.name;
   newElement.querySelector(".element__title").setAttribute("title", newPlace.name);
-  newElement.querySelector(".element__image").setAttribute("alt",newPlace.imgAlt);
-  newElement.querySelector(".element__image").setAttribute("src",newPlace.img);
-  newElement.querySelector(".element__image").onerror = function(evt){
-    evt.target.src = '../images/card-image_unknown.jpg';
-  };
+  newElement.querySelector(".element__image").setAttribute("alt", newPlace.imgAlt);
+  newElement.querySelector(".element__image").setAttribute("src", newPlace.img);
+
+  newElement.querySelector(".element__image").onerror = elementMockImgOnError;
+  newElement.querySelector(".element__like-icon").addEventListener("click", elementLikeToggle);
+  newElement.querySelector(".element__remove-icon").addEventListener("click", removeParent);
 
   elementsGrid.prepend(newElement);
 }
+
+const elementsGrid = document.querySelector(".elements");
+const elementTemplate = document.querySelector(".template_element").content;
 
 initialCards.forEach(renderNewPlace);
 
@@ -103,7 +116,6 @@ function addPopupOpen(){
 
 function addPopupSubmit(evt){
   evt.preventDefault();
-  console.log('Add Place Submit');
   renderNewPlace({
               name: addPopupInputName.value?addPopupInputName.value:'Неизвестное место',
               img: addPopupInputSrc.value,
