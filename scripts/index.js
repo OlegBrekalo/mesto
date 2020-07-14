@@ -52,6 +52,7 @@ function renderNewPlace(newPlace){
   newElement.querySelector(".element__image").setAttribute("src", newPlace.img);
 
   newElement.querySelector(".element__image").onerror = elementMockImgOnError;
+  newElement.querySelector(".element__image").addEventListener("click", imgPopupOpenBttn);
   newElement.querySelector(".element__like-icon").addEventListener("click", elementLikeToggle);
   newElement.querySelector(".element__remove-icon").addEventListener("click", removeParent);
 
@@ -127,3 +128,19 @@ function addPopupSubmit(evt){
 addPopupOpenBttn.addEventListener("click", addPopupOpen);
 addPopupCloseBttn.addEventListener("click", addPopupDisplayToggle);
 addPopupForm.addEventListener('submit', addPopupSubmit);
+
+//логика img-popup
+const imgPopup = document.querySelector(".img-popup");
+const imgPopupCloseBttn = imgPopup.querySelector(".img-popup__close-icon");
+
+function imgPopupDisplayToggle(){
+  imgPopup.classList.toggle("img-popup_opened");
+}
+
+function imgPopupOpenBttn (evt){
+  imgPopup.querySelector(".img-popup__image").setAttribute("src", evt.target.attributes.src.value);
+  imgPopup.querySelector(".img-popup__image").setAttribute("alt", evt.target.attributes.alt.value);
+  imgPopup.querySelector(".img-popup__title").textContent = evt.target.parentNode.querySelector(".element__title").textContent;  imgPopupDisplayToggle();
+}
+
+imgPopupCloseBttn.addEventListener("click", imgPopupDisplayToggle);

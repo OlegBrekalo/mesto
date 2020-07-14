@@ -1,0 +1,4 @@
+.img-popup_opened{
+  /*display: none*/
+  display: flex;
+}

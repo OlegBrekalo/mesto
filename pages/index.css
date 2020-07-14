@@ -44,3 +44,10 @@
 @import url('../blocks/profile/__job/profile__job.css');
 @import url('../blocks/profile/__name/profile__name.css');
 @import url('../blocks/profile/__profile-info/profile__profile-info.css');
+
+@import url('../blocks/img-popup/img-popup.css');
+@import url('../blocks/img-popup/_opened/img-popup_opened.css');
+@import url('../blocks/img-popup/__container/img-popup__container.css');
+@import url('../blocks/img-popup/__close-icon/img-popup__close-icon.css');
+@import url('../blocks/img-popup/__image/img-popup__image.css');
+@import url('../blocks/img-popup/__title/img-popup__title.css');
