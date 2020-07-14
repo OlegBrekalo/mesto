@@ -1,6 +1,9 @@
 .img-popup{
-  display: none;
-  /*display: flex*/
+  display: flex;
+
+  visibility:hidden;
+  opacity:0;
+  transition:visibility 0s linear 0.5s,opacity 0.5s linear;
 
   flex-direction: column;
   justify-content: center;
