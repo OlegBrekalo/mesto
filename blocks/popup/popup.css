@@ -1,10 +1,3 @@
-@import url('./__close-icon/popup__close-icon.css');
-@import url('./__container/popup__container.css');
-@import url('./__form/popup__form.css');
-@import url('./__input-text/popup__input-text.css');
-@import url('./__submit-button/popup__submit-button.css');
-@import url('./__title/popup__title.css');
-
 .popup{
   flex-direction: column;
   justify-content: center;

@@ -7,7 +7,7 @@
   cursor: url('../../images/bttn-cursor.png'), pointer;
   transition: opacity 1s linear;
 
-  background-image: url('../../../images/like-icon.svg');
+  background-image: url('../../../images/like-icon_white.svg');
   background-position: center;
   background-repeat: no-repeat;
 
