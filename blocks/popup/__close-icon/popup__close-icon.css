@@ -1,4 +1,4 @@
-.edit-popup__close-icon{
+.popup__close-icon{
   border: none;
   background: transparent;
   -webkit-appearance: none;
@@ -19,12 +19,12 @@
   z-index: 1;
 }
 
-.edit-popup__close-icon:hover{
+.popup__close-icon:hover{
   opacity: .5;
 }
 
 @media screen and (max-width: 530px){
-  .edit-popup__close-icon{
+  .popup__close-icon{
     width: 30px;
     height: 30px;
 

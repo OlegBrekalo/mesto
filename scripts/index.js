@@ -1,16 +1,68 @@
-//Ивенты кнопок
-let editPopup = document.querySelector(".edit-popup");
-let editPopupOpenBttn = document.querySelector(".profile__edit-button");
-let editPopupCloseBttn = document.querySelector(".edit-popup__close-icon");
-let profileName = document.querySelector(".profile__name");
-let profileJob = document.querySelector(".profile__job");
-let editPopupInputName = document.querySelector(".edit-popup__input-text_type_name");
-let editPopupInputJob = document.querySelector(".edit-popup__input-text_type_job");
-let editPopupForm = document.querySelector(".edit-popup__form");
+//Инициализация значений по-умолчанию
+const initialCards = [
+  {
+    name: 'Аляска, США',
+    img: '../images/card-image_usa.jpg',
+    imgAlt: 'Горная долина Аляска, США.'
+  },
+  {
+    name: 'Сельяландсфосс, Исландия',
+    img: '../images/card-image_iceland.jpg',
+    imgAlt: 'Водопад Сельяландсфосс, Исландия.'
+  },
+  {
+    name: 'Пассо Ролле, Италия',
+    img: '../images/card-image_italy.jpg',
+    imgAlt: 'Перевал Пассо Ролле, Италия.'
+  },
+  {
+    name: 'Лофотенские острова, Норвегия',
+    img: '../images/card-img_norway.jpg',
+    imgAlt: 'Лофотенские острова, Норвегия.'
+  },
+  {
+    name: 'Южный остров, Новая Зеландия',
+    img: '../images/card-image_new-zealand.jpg',
+    imgAlt: 'Горный ледник на Южном острове Новой Зеландии.'
+  },
+  {
+    name: 'Гижгит, Кабардино-Балкарская Республика',
+    img: '../images/card-image_russia.jpg',
+    imgAlt: 'Озеро Гижгит.'
+  }
+];
 
+const elementsGrid = document.querySelector(".elements");
+const elementTemplate = document.querySelector(".template_element").content;
+
+function renderNewPlace(newPlace){
+  const newElement = elementTemplate.cloneNode(true);
+  newElement.querySelector(".element__title").textContent = newPlace.name;
+  newElement.querySelector(".element__title").setAttribute("title", newPlace.name);
+  newElement.querySelector(".element__image").setAttribute("alt",newPlace.imgAlt);
+  newElement.querySelector(".element__image").setAttribute("src",newPlace.img);
+  newElement.querySelector(".element__image").onerror = function(evt){
+    evt.target.src = '../images/card-image_unknown.jpg';
+  };
+
+  elementsGrid.prepend(newElement);
+}
+
+initialCards.forEach(renderNewPlace);
+
+//Логика edit-popup
+const editPopup = document.querySelector(".popup-edit");
+
+const editPopupOpenBttn = document.querySelector(".profile__edit-button");
+const editPopupCloseBttn = editPopup.querySelector(".popup__close-icon");
+const editPopupInputName = editPopup.querySelector(".edit-popup__input-text_type_name");
+const editPopupInputJob = editPopup.querySelector(".edit-popup__input-text_type_job");
+const editPopupForm = editPopup.querySelector(".popup__form");
+const profileName = document.querySelector(".profile__name");
+const profileJob = document.querySelector(".profile__job");
 
 function editPopupDisplayToggle(){
-  editPopup.classList.toggle("edit-popup_opened");
+  editPopup.classList.toggle("popup-edit_opened");
 }
 
 function editPopupOpen(){
@@ -30,50 +82,36 @@ editPopupOpenBttn.addEventListener("click", editPopupOpen);
 editPopupCloseBttn.addEventListener("click", editPopupDisplayToggle);
 editPopupForm.addEventListener('submit', editPopupSubmit);
 
-//Инициализация значений по-умолчанию
-const initialCards = [
-  {
-      name: 'Гижгит, Кабардино-Балкарская Республика',
-      img: '../images/card-image_russia.jpg',
-      imgAlt: 'Озеро Гижгит.'
-  },
-  {
-    name: 'Южный остров, Новая Зеландия',
-    img: '../images/card-image_new-zealand.jpg',
-    imgAlt: 'Горный ледник на Южном острове Новой Зеландии.'
-  },
-  {
-      name: 'Лофотенские острова, Норвегия',
-      img: '../images/card-img_norway.jpg',
-      imgAlt: 'Лофотенские острова, Норвегия.'
-  },
-  {
-    name: 'Пассо Ролле, Италия',
-    img: '../images/card-image_italy.jpg',
-    imgAlt: 'Перевал Пассо Ролле, Италия.'
-  },
-  {
-      name: 'Сельяландсфосс, Исландия',
-      img: '../images/card-image_iceland.jpg',
-      imgAlt: 'Водопад Сельяландсфосс, Исландия.'
-  },
-  {
-    name: 'Аляска, США',
-    img: '../images/card-image_usa.jpg',
-    imgAlt: 'Горная долина Аляска, США.'
-  }
-];
+//Логика add-popup
+const addPopup = document.querySelector(".popup-add");
 
-const elementsGrid = document.querySelector(".elements");
-const elementTemplate = document.querySelector(".template_element").content;
+const addPopupOpenBttn = document.querySelector(".profile__add-button");
+const addPopupCloseBttn = addPopup.querySelector(".popup__close-icon");
+const addPopupInputName = addPopup.querySelector(".add-form__input-text_type_name");
+const addPopupInputSrc = addPopup.querySelector(".add-form__input-text_type_src");
+const addPopupForm = addPopup.querySelector(".popup__form");
 
-initialCards.forEach(function (init){
-  const newElement = elementTemplate.cloneNode(true);
+function addPopupDisplayToggle(){
+  addPopup.classList.toggle("popup-add_opened");
+}
 
-  newElement.querySelector(".element__title").textContent = init.name;
-  newElement.querySelector(".element__title").setAttribute("title", init.name);
-  newElement.querySelector(".element__image").setAttribute("src",init.img);
-  newElement.querySelector(".element__image").setAttribute("alt",init.imgAlt);
+function addPopupOpen(){
+  addPopupDisplayToggle();
+  addPopupInputName.value = '';
+  addPopupInputSrc.value = '';
+}
 
-  elementsGrid.append(newElement);
-});
+function addPopupSubmit(evt){
+  evt.preventDefault();
+  console.log('Add Place Submit');
+  renderNewPlace({
+              name: addPopupInputName.value?addPopupInputName.value:'Неизвестное место',
+              img: addPopupInputSrc.value,
+              imgAlt: addPopupInputName.value?addPopupInputName.value:'Неизвестное место'
+  });
+  addPopupDisplayToggle();
+}
+
+addPopupOpenBttn.addEventListener("click", addPopupOpen);
+addPopupCloseBttn.addEventListener("click", addPopupDisplayToggle);
+addPopupForm.addEventListener('submit', addPopupSubmit);

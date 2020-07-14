@@ -11,5 +11,11 @@
 @import url('../blocks/popup-form/popup-form.css');
 @import url('../blocks/profile/profile.css');
 @import url('../blocks/content-block/content-block.css');
-@import url('../blocks/edit-popup/edit-popup.css');
-@import url('../blocks/edit-popup/_opened/edit-popup_opened.css');
+
+@import url('../blocks/popup/popup.css');
+
+@import url('../blocks/popup-edit/popup-edit.css');
+@import url('../blocks/popup-edit/popup-edit_opened/popup-edit_opened.css');
+
+@import url('../blocks/popup-add/popup-add.css');
+@import url('../blocks/popup-add/popup-add_opened/popup-add_opened.css');

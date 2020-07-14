@@ -1,4 +1,4 @@
-.edit-popup__submit-button{
+.popup__submit-button{
   height: 50px;
   background-color: black;
   border: 0;
@@ -12,6 +12,6 @@
   letter-spacing: 0;
 }
 
-.edit-popup__submit-button:hover{
+.popup__submit-button:hover{
   opacity: .5;
 }

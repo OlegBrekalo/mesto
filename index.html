@@ -21,22 +21,31 @@
         </div>
         <button type="button" class="profile__add-button"></button>
       </section>
-      <section class="elements content-section">
-
-      </section>
+      <section class="elements content-section"></section>
     </main>
     <footer class="footer content-section">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
-  <div class="edit-popup">
-    <div class="edit-popup__container">
-      <button type="button" class="edit-popup__close-icon"></button>
-      <p class="edit-popup__title">Редактировать профиль</p>
-      <form class="edit-popup__form" autocomplete="off">
-        <input type="text" name="edit-form_name" class="edit-popup__input-text edit-popup__input-text_type_name">
-        <input type="text" name="edit-form_job" class="edit-popup__input-text edit-popup__input-text_type_job">
-        <button type="submit" class="edit-popup__submit-button">Сохранить</button>
+  <div class="popup-edit popup">
+    <div class="popup__container">
+      <button type="button" class="popup__close-icon"></button>
+      <p class="popup__title">Редактировать профиль</p>
+      <form class="popup__form" autocomplete="off">
+        <input type="text" name="edit-form_name" class="popup__input-text edit-popup__input-text_type_name">
+        <input type="text" name="edit-form_job" class="popup__input-text edit-popup__input-text_type_job">
+        <button type="submit" class="popup__submit-button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup-add popup">
+    <div class="popup__container">
+      <button type="button" class="popup__close-icon"></button>
+      <p class="popup__title">Новое место</p>
+      <form class="popup__form" autocomplete="off">
+        <input type="text" name="add-form_name" placeholder="Название" class="popup__input-text add-form__input-text_type_name">
+        <input type="text" name="add-form_src" placeholder="Ссылка на картинку" class="popup__input-text add-form__input-text_type_src">
+        <button type="submit" class="popup__submit-button">Создать</button>
       </form>
     </div>
   </div>
