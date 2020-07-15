@@ -60,7 +60,7 @@ function renderNewPlace(newPlace){
 }
 
 const elementsGrid = document.querySelector(".elements");
-const elementTemplate = document.querySelector(".template_element").content;
+const elementTemplate = document.querySelector("#template_element").content;
 
 initialCards.forEach(renderNewPlace);
 
@@ -75,8 +75,8 @@ const editPopupForm = editPopup.querySelector(".popup__form");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 
-function editPopupDisplayToggle(){
-  editPopup.classList.toggle("popup-edit_opened");
+function editPopupDisplayToggle(evt){
+  editPopup.classList.toggle("popup_opened");
 }
 
 function editPopupOpen(){
@@ -105,8 +105,8 @@ const addPopupInputName = addPopup.querySelector(".add-form__input-text_type_nam
 const addPopupInputSrc = addPopup.querySelector(".add-form__input-text_type_src");
 const addPopupForm = addPopup.querySelector(".popup__form");
 
-function addPopupDisplayToggle(){
-  addPopup.classList.toggle("popup-add_opened");
+function addPopupDisplayToggle(evt){
+  addPopup.classList.toggle("popup_opened");
 }
 
 function addPopupOpen(){
