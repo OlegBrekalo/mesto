@@ -1,5 +1,6 @@
 .img-popup__title{
   margin-top: 10px;
+  max-width: 75vw;
 
   font-weight: normal;
   font-size: 12px;

@@ -16,11 +16,15 @@
 
 @media screen and (max-width: 530px){
   .popup__input-text{
-    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 2.5;
+    padding: 1px;
+
+    margin-bottom: 11px;
   }
 
   .popup__input-text:nth-child(2){
-    margin-bottom: 25px;
+    margin-bottom: 36px;
   }
 
 }
