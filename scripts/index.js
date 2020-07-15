@@ -2,32 +2,32 @@
 const initialCards = [
   {
     name: 'Аляска, США',
-    img: '../images/card-image_usa.jpg',
+    img: 'https://images.unsplash.com/photo-1548181449-abc0791d2354?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80',
     imgAlt: 'Горная долина Аляска, США.'
   },
   {
     name: 'Сельяландсфосс, Исландия',
-    img: '../images/card-image_iceland.jpg',
+    img: 'https://images.unsplash.com/photo-1585432615987-7f50eab32daa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80',
     imgAlt: 'Водопад Сельяландсфосс, Исландия.'
   },
   {
     name: 'Пассо Ролле, Италия',
-    img: '../images/card-image_italy.jpg',
+    img: 'https://images.unsplash.com/photo-1535730480175-8f43dbb6f894?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
     imgAlt: 'Перевал Пассо Ролле, Италия.'
   },
   {
     name: 'Лофотенские острова, Норвегия',
-    img: '../images/card-img_norway.jpg',
+    img: 'https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80',
     imgAlt: 'Лофотенские острова, Норвегия.'
   },
   {
     name: 'Южный остров, Новая Зеландия',
-    img: '../images/card-image_new-zealand.jpg',
+    img: 'https://images.unsplash.com/photo-1494391468241-0a4476581b78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
     imgAlt: 'Горный ледник на Южном острове Новой Зеландии.'
   },
   {
     name: 'Гижгит, Кабардино-Балкарская Республика',
-    img: '../images/card-image_russia.jpg',
+    img: 'https://images.unsplash.com/photo-1572815117612-885a3e0288ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
     imgAlt: 'Озеро Гижгит.'
   }
 ];
@@ -37,7 +37,7 @@ function elementLikeToggle(evt){
 }
 
 function elementMockImgOnError(evt){
-  evt.target.src = '../images/card-image_unknown.jpg';
+  evt.target.src = 'https://images.unsplash.com/photo-1458419948946-19fb2cc296af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80';
 }
 
 function removeParent(evt){
