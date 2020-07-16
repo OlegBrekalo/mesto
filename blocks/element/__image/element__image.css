@@ -5,5 +5,5 @@
   object-fit: cover;
   object-position: top;
 
-  cursor: url('images/bttn-cursor.svg'), url('../../../images/bttn-cursor.png'), pointer;
+  cursor: url('https://raw.githubusercontent.com/OlegBrekalo/mesto/master/images/bttn-cursor.png'), url('../../../images/bttn-cursor.png'), pointer;
 }
