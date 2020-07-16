@@ -1,24 +1,6 @@
 .popup__container{
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-content: center;
-
   position: relative;
   margin: 0 auto;
-  width: 430px;
-  height: 330px;
-  border-radius: 3%;
-
-  background-color: white;
-
-  z-index: 1;
-}
-
-@media screen and (max-width: 530px){
-  .popup__container{
-    margin-top: 90px;
-    width: 240px;
-    height: 258px;
-  }
 }

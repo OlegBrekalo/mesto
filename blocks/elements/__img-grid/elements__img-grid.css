@@ -1,0 +1,16 @@
+.elements__img-grid{
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  grid-row-gap: 21px;
+  grid-column-gap: 18px;
+  justify-content: center;
+
+  list-style: none;
+}
+
+@media screen and (max-width: 425px){
+  .elements__img-grid{
+    margin-top: 36px;
+  }
+}

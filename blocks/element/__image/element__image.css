@@ -5,5 +5,5 @@
   object-fit: cover;
   object-position: top;
 
-  cursor: url('../../images/bttn-cursor.png'), pointer;
+  cursor: url('../../images/bttn-cursor.svg'), pointer;
 }

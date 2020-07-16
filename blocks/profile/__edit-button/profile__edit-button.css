@@ -8,7 +8,7 @@
   align-self: end;
   justify-self: start;
 
-  cursor: url('../../images/bttn-cursor.png'), pointer;
+  cursor: url('../../images/bttn-cursor.svg'), pointer;
   transition: opacity 1s linear;
 
   width: 24px;
