@@ -7,7 +7,7 @@
   width: 100%;
   height: 50px;
 
-  cursor: url('../../images/bttn-cursor.svg'), pointer;
+  cursor: url('images/bttn-cursor.svg'), url('../../../images/bttn-cursor.png'), pointer;
   transition: opacity 1s linear;
 
   background-image: url('../../../images/add-icon.svg');
