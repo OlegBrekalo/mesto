@@ -10,6 +10,10 @@
 
 }
 
+.popup__input-text:invalid{
+  box-shadow: none;
+}
+
 .popup__input-text:nth-child(2){
   margin-bottom: 48px;
 }
