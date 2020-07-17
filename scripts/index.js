@@ -1,3 +1,36 @@
+const initialCards = [
+  {
+    name: 'Аляска, США',
+    img: 'https://images.unsplash.com/photo-1548181449-abc0791d2354?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80',
+    imgAlt: 'Горная долина Аляска, США.'
+  },
+  {
+    name: 'Сельяландсфосс, Исландия',
+    img: 'https://images.unsplash.com/photo-1585432615987-7f50eab32daa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80',
+    imgAlt: 'Водопад Сельяландсфосс, Исландия.'
+  },
+  {
+    name: 'Пассо Ролле, Италия',
+    img: 'https://images.unsplash.com/photo-1535730480175-8f43dbb6f894?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
+    imgAlt: 'Перевал Пассо Ролле, Италия.'
+  },
+  {
+    name: 'Лофотенские острова, Норвегия',
+    img: 'https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80',
+    imgAlt: 'Лофотенские острова, Норвегия.'
+  },
+  {
+    name: 'Скалистые горы, Канада',
+    img: 'https://images.unsplash.com/photo-1489363855452-7327672b1608?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80',
+    imgAlt: 'Канадские Скалистые горы.'
+  },
+  {
+    name: 'Гижгит, Кабардино-Балкарская Республика',
+    img: 'https://images.unsplash.com/photo-1572815117612-885a3e0288ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
+    imgAlt: 'Озеро Гижгит.'
+  }
+];
+
 //Глобальные переменные editPopup
 const editPopup = document.querySelector(".popup-edit");
 const editPopupOpenBttn = document.querySelector(".profile__edit-button");
@@ -36,10 +69,6 @@ function editPopupOpen(){
   editPopupInputJob.value = profileJob.textContent;
 }
 
-function editPopupClose(){
-  popupDisplayToggle(editPopup);
-}
-
 function editPopupSubmit(evt){
   evt.preventDefault();
   profileName.textContent = editPopupInputName.value;
@@ -48,7 +77,7 @@ function editPopupSubmit(evt){
 }
 
 editPopupOpenBttn.addEventListener("click", editPopupOpen);
-editPopupCloseBttn.addEventListener("click", editPopupClose);
+editPopupCloseBttn.addEventListener("click", ()=>popupDisplayToggle(editPopup));
 editPopupForm.addEventListener('submit', editPopupSubmit);
 
 //Ивенты addPopup
@@ -59,14 +88,9 @@ function addPopupOpen(){
   addPopupInputSrc.value = '';
 }
 
-function addPopupClose(){
-  popupDisplayToggle(addPopup);
-}
-
 function addPopupSubmit(evt){
   evt.preventDefault();
-  renderNewPlace({
-              name: addPopupInputName.value ? addPopupInputName.value : 'Неизвестное место',
+  renderCard({name: addPopupInputName.value ? addPopupInputName.value : 'Неизвестное место',
               img: addPopupInputSrc.value,
               imgAlt: addPopupInputName.value ? addPopupInputName.value : 'Неизвестное место'
   });
@@ -74,7 +98,7 @@ function addPopupSubmit(evt){
 }
 
 addPopupOpenBttn.addEventListener("click", addPopupOpen);
-addPopupCloseBttn.addEventListener("click", addPopupClose);
+addPopupCloseBttn.addEventListener("click", ()=>popupDisplayToggle(addPopup));
 addPopupForm.addEventListener('submit', addPopupSubmit);
 
 //Ивенты imgPopup
@@ -88,11 +112,7 @@ function imgPopupOpen(evt){
   popupDisplayToggle(imgPopup);
 }
 
-function imgPopupClose(){
-  popupDisplayToggle(imgPopup);
-}
-
-imgPopupCloseBttn.addEventListener("click", imgPopupClose);
+imgPopupCloseBttn.addEventListener("click", ()=>popupDisplayToggle(imgPopup));
 
 //Логика карточек
 function elementMockImgOnError(evt){
@@ -107,11 +127,7 @@ function removeParent(evt){
   evt.target.parentNode.remove();
 }
 
-function renderCard(place){
-  elementsGrid.prepend(place);
-}
-
-function renderNewPlace(newPlace){
+function newDOMElementNewPlace(newPlace){
   const newElement = elementTemplate.cloneNode(true);
   const newElementTitle = newElement.querySelector(".element__title");
   newElementTitle.textContent = newPlace.name;
@@ -126,41 +142,12 @@ function renderNewPlace(newPlace){
   newElement.querySelector(".element__like-icon").addEventListener("click", elementLikeToggle);
 
   newElement.querySelector(".element__remove-icon").addEventListener("click", removeParent);
+  return newElement;
+}
 
-  renderCard(newElement);
+function renderCard(newPlace){
+  elementsGrid.prepend(newDOMElementNewPlace(newPlace));
 }
 
 //Инициализация значений по-умолчанию
-const initialCards = [
-  {
-    name: 'Аляска, США',
-    img: 'https://images.unsplash.com/photo-1548181449-abc0791d2354?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80',
-    imgAlt: 'Горная долина Аляска, США.'
-  },
-  {
-    name: 'Сельяландсфосс, Исландия',
-    img: 'https://images.unsplash.com/photo-1585432615987-7f50eab32daa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80',
-    imgAlt: 'Водопад Сельяландсфосс, Исландия.'
-  },
-  {
-    name: 'Пассо Ролле, Италия',
-    img: 'https://images.unsplash.com/photo-1535730480175-8f43dbb6f894?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-    imgAlt: 'Перевал Пассо Ролле, Италия.'
-  },
-  {
-    name: 'Лофотенские острова, Норвегия',
-    img: 'https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80',
-    imgAlt: 'Лофотенские острова, Норвегия.'
-  },
-  {
-    name: 'Скалистые горы, Канада',
-    img: 'https://images.unsplash.com/photo-1489363855452-7327672b1608?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80',
-    imgAlt: 'Канадские Скалистые горы.'
-  },
-  {
-    name: 'Гижгит, Кабардино-Балкарская Республика',
-    img: 'https://images.unsplash.com/photo-1572815117612-885a3e0288ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-    imgAlt: 'Озеро Гижгит.'
-  }
-];
-initialCards.forEach(renderNewPlace);
+initialCards.forEach(renderCard);
