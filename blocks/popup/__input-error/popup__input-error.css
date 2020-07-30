@@ -7,7 +7,7 @@
   font-size: 12px;
   line-height: 1.1;
 
-  height: 13.2px;
+  min-height: 13.2px;
 
   color: red;
 }
