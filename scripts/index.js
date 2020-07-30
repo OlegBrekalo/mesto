@@ -1,5 +1,6 @@
 //#region Constants
 
+let iOpenPopup;
 //Глобальные переменные editPopup
 const editPopup = document.querySelector(".popup-edit");
 const editPopupOpenBttn = document.querySelector(".profile__edit-button");
@@ -62,9 +63,34 @@ const initialCards = [
 //#endregion
 
 //#region Open-Close-Submit Popups
-function popupDisplayToggle(popup){
-  popup.classList.toggle("popup_opened");
+
+function EventClosePopupByEsc(evt){
+    if (evt.key === 'Escape'){
+      popupDisplayToggle(iOpenPopup);
+    };
 }
+
+function setEventClosePopupOnEsc(popup){
+  document.addEventListener('keydown', EventClosePopupByEsc);
+}
+
+function removeEventClosePopupOnEsc(popup){
+  document.removeEventListener('keydown', EventClosePopupByEsc);
+}
+
+function popupDisplayToggle(popup){
+  if (!popup.classList.contains('popup_opened')){
+    popup.classList.add("popup_opened");
+    iOpenPopup = popup;
+    setEventClosePopupOnEsc(popup);
+  } else {
+    popup.classList.remove("popup_opened");
+    iOpenPopup = null;
+    removeEventClosePopupOnEsc(popup);
+  }
+}
+
+
 
 //Проблема: если после провала валидации закрыть форму, то после её открытия ошибки остаются висеть + блокированна кнопка
 //Решение: Можно просто вызывать функцию hideErrorTootlit(), но согласно требованию брифа я вынужден разделить js на 2 файла и её не видно
@@ -84,12 +110,13 @@ function editPopupOpen(){
 
   initialazeForm(editPopupForm);
 
-  const editPopupSubmitBttn = addPopupForm.querySelector('.popup__submit-button');
+  const editPopupSubmitBttn = editPopupForm.querySelector('.popup__submit-button');
   if (editPopupInputName.value.length > 1 && editPopupInputJob.value.length > 1) {
-    editPopupSubmitBttn.removeAttribute('disabled');
+    editPopupSubmitBttn.removeAttribute('disabled', false)
   } else {
     editPopupSubmitBttn.setAttribute('disabled', true);
   }
+  setOpenPopup(editPopup);
 }
 
 function editPopupSubmit(evt){
@@ -110,6 +137,7 @@ function addPopupOpen(){
   addPopupForm.querySelector('.popup__submit-button').setAttribute('disabled', true);
 
   initialazeForm(addPopupForm);
+  setEventClosePopupOnEsc(addPopup);
 }
 
 function addPopupSubmit(evt){
@@ -133,10 +161,24 @@ function imgPopupOpen(evt){
 
   imgPopup.querySelector(".popup__img-subtitle").textContent = evt.target.parentNode.querySelector(".element__title").textContent;
   popupDisplayToggle(imgPopup);
+  setOpenPopup(imgPopup);
 }
 
 imgPopupCloseBttn.addEventListener("click", ()=>popupDisplayToggle(imgPopup));
 
+
+function addOnClickClosePopupEvents(){
+  const popupList = Array.from( document.querySelectorAll('.popup') );
+  popupList.forEach( (popup) => {
+    popup.addEventListener('click', (evt) =>{
+      if (evt.currentTarget === evt.target){
+        popupDisplayToggle(popup);
+      }
+    });
+  });
+}
+
+addOnClickClosePopupEvents();
 //#endregion
 
 //#region Cards Logic. Likes, delete and render new Cards
@@ -176,3 +218,4 @@ function renderCard(newPlace){
 
 initialCards.forEach(renderCard);
 //#endregion
+
