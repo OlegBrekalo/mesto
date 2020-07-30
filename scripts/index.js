@@ -116,7 +116,6 @@ function editPopupOpen(){
   } else {
     editPopupSubmitBttn.setAttribute('disabled', true);
   }
-  setOpenPopup(editPopup);
 }
 
 function editPopupSubmit(evt){
@@ -161,7 +160,6 @@ function imgPopupOpen(evt){
 
   imgPopup.querySelector(".popup__img-subtitle").textContent = evt.target.parentNode.querySelector(".element__title").textContent;
   popupDisplayToggle(imgPopup);
-  setOpenPopup(imgPopup);
 }
 
 imgPopupCloseBttn.addEventListener("click", ()=>popupDisplayToggle(imgPopup));
