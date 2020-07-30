@@ -34,8 +34,14 @@
       <button type="button" class="popup__close-icon"></button>
       <p class="popup__title">Редактировать профиль</p>
       <form class="popup__form" autocomplete="off">
-        <input type="text" name="edit-form_name" class="popup__input-text edit-popup__input-text_type_name">
-        <input type="text" name="edit-form_job" class="popup__input-text edit-popup__input-text_type_job">
+        <label class="popup__form-label">
+          <input id="edit-form_name" name="edit-form_name" type="text" required minlength="2" maxlength="40" class="popup__input-text edit-popup__input-text_type_name">
+          <span id="edit-form_name-error" class="popup__input-error"></span>
+        </label>
+        <label class="popup__form-label">
+          <input id="edit-form_about" name="edit-form_about" type="text" required minlength="2" maxlength="200" class="popup__input-text edit-popup__input-text_type_job">
+          <span id="edit-form_about-error" class="popup__input-error" ></span>
+        </label>
         <button type="submit" class="popup__submit-button">Сохранить</button>
       </form>
     </div>
@@ -45,8 +51,14 @@
       <button type="button" class="popup__close-icon"></button>
       <p class="popup__title">Новое место</p>
       <form class="popup__form" autocomplete="off">
-        <input type="text" name="add-form_name" placeholder="Название" class="popup__input-text add-form__input-text_type_name">
-        <input type="url" required name="add-form_src" placeholder="Ссылка на картинку" class="popup__input-text add-form__input-text_type_src">
+        <label class="popup__form-label">
+          <input id="add-form_name" name="add-form_name" type="text" required minlength="1" maxlength="30" placeholder="Название" class="popup__input-text add-form__input-text_type_name">
+          <span id="add-form_name-error" class="popup__input-error"></span>
+        </label>
+        <label class="popup__form-label">
+          <input id="add-form_src" name="add-form_src" type="url" required  placeholder="Ссылка на картинку" class="popup__input-text add-form__input-text_type_src">
+          <span id="add-form_src-error" class="popup__input-error" ></span>
+        </label>
         <button type="submit" class="popup__submit-button">Создать</button>
       </form>
     </div>
@@ -69,5 +81,6 @@
     </li>
   </template>
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 </html>

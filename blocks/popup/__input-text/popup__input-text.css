@@ -2,7 +2,7 @@
   border: 0;
   border-bottom: 1px solid grey;
 
-  margin-bottom: 19px;
+  margin-bottom: 6px;
 
   font-size: 14px;
   line-height: 2.5;
@@ -14,10 +14,6 @@
   box-shadow: none;
 }
 
-.popup__input-text:nth-child(2){
-  margin-bottom: 48px;
-}
-
 @media screen and (max-width: 530px){
   .popup__input-text{
     font-size: 12px;
@@ -26,9 +22,4 @@
 
     margin-bottom: 11px;
   }
-
-  .popup__input-text:nth-child(2){
-    margin-bottom: 36px;
-  }
-
 }
