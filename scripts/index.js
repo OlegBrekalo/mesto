@@ -15,6 +15,9 @@ const editPopupInputJob = editPopup.querySelector(
   ".edit-popup__input-text_type_job"
 );
 const editPopupForm = editPopup.querySelector(".popup__form");
+const editPopupSubmitBttn = editPopupForm.querySelector(
+  ".popup__submit-button"
+);
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 
@@ -29,14 +32,19 @@ const addPopupInputSrc = addPopup.querySelector(
   ".add-form__input-text_type_src"
 );
 const addPopupForm = addPopup.querySelector(".popup__form");
+const addPopupSubmitBttn = addPopupForm.querySelector(".popup__submit-button");
 
 //Глобальные переменные imgPopup
 const imgPopup = document.querySelector(".popup-img");
+const imgPopupImage = imgPopup.querySelector(".popup__image");
 const imgPopupCloseBttn = imgPopup.querySelector(".popup__close-icon");
+const imgPopupSubtile = imgPopup.querySelector(".popup__img-subtitle");
 
 //Глобальные переменные отдельных карточек
 const elementsGrid = document.querySelector(".elements__img-grid");
 const elementTemplateID = "#template_element";
+
+const formValidatorMap = new Map();
 
 const initialCards = [
   {
@@ -83,7 +91,7 @@ const initialCards = [
 
 function eventClosePopupByEsc(evt) {
   if (evt.key === "Escape") {
-    popupDisplayToggle(iOpenPopup);
+    popupHide(iOpenPopup);
   }
 }
 
@@ -95,61 +103,48 @@ function removeEventClosePopupOnEsc(popup) {
   document.removeEventListener("keydown", eventClosePopupByEsc);
 }
 
-function popupDisplayToggle(popup) {
-  if (!popup.classList.contains("popup_opened")) {
-    popup.classList.add("popup_opened");
-    iOpenPopup = popup;
-    setEventClosePopupOnEsc(popup);
-  } else {
-    popup.classList.remove("popup_opened");
-    iOpenPopup = null;
-    removeEventClosePopupOnEsc(popup);
-  }
+function popupShow(popup) {
+  popup.classList.add("popup_opened");
+  iOpenPopup = popup;
+  setEventClosePopupOnEsc(popup);
 }
 
-function initialazeForm(form) {
-  Array.from(form.querySelectorAll(".popup__input-text")).forEach((input) => {
-    input.classList.remove("popup__input-text_invalid");
-    input.parentNode
-      .querySelector(`#${input.id}-error`)
-      .classList.remove("popup__input-error_show");
-  });
+function popupHide(popup) {
+  popup.classList.remove("popup_opened");
+  iOpenPopup = null;
+  removeEventClosePopupOnEsc(popup);
 }
 
 //Ивенты editPopup
 function editPopupOpen() {
-  popupDisplayToggle(editPopup);
+  popupShow(editPopup);
   editPopupInputName.value = profileName.textContent;
   editPopupInputJob.value = profileJob.textContent;
 
-  initialazeForm(editPopupForm);
-  editPopupForm
-    .querySelector(".popup__submit-button")
-    .removeAttribute("disabled", false);
+  formValidatorMap.get(editPopupForm).initialazeForm();
+  formValidatorMap
+    .get(editPopupForm)
+    .setButtonDisable(editPopupSubmitBttn, false);
 }
 
 function editPopupSubmit(evt) {
   profileName.textContent = editPopupInputName.value;
   profileJob.textContent = editPopupInputJob.value;
-  popupDisplayToggle(editPopup);
+  popupHide(editPopup);
 }
 
 editPopupOpenBttn.addEventListener("click", editPopupOpen);
-editPopupCloseBttn.addEventListener("click", () =>
-  popupDisplayToggle(editPopup)
-);
+editPopupCloseBttn.addEventListener("click", () => popupHide(editPopup));
 editPopupForm.addEventListener("submit", editPopupSubmit);
 
 //Ивенты addPopup
 function addPopupOpen() {
-  popupDisplayToggle(addPopup);
+  popupShow(addPopup);
   addPopupInputName.value = "";
   addPopupInputSrc.value = "";
-  addPopupForm
-    .querySelector(".popup__submit-button")
-    .setAttribute("disabled", true);
 
-  initialazeForm(addPopupForm);
+  formValidatorMap.get(addPopupForm).initialazeForm();
+  formValidatorMap.get(addPopupForm).setButtonDisable(addPopupSubmitBttn, true);
 }
 
 function addPopupSubmit(evt) {
@@ -164,36 +159,39 @@ function addPopupSubmit(evt) {
       imgPopupOpen
     ).renderCard()
   );
-  popupDisplayToggle(addPopup);
+  popupHide(addPopup);
 }
 
 addPopupOpenBttn.addEventListener("click", addPopupOpen);
-addPopupCloseBttn.addEventListener("click", () => popupDisplayToggle(addPopup));
+addPopupCloseBttn.addEventListener("click", () => popupHide(addPopup));
 addPopupForm.addEventListener("submit", addPopupSubmit);
 
 //Ивенты imgPopup
 
+//Отвечая на "Можно лучше" про imgPopupOpen
+//Я не представляю как можно подавать на вход открытия попапа информацию о карточке, потому что ивент открытия возникает в глобальной области
+//Даже если я начну хранить объекты карточек отдельно, связать место возникновения ивента и экземляр внутри хранилища будет сложно
+///////////////
+//Опция: полностью убрать код открытия imgPopup в класс Card и вызывать его по данным карточки
+//Но открытие модального окна - это вообще не не должно быть функциональностью карточки, это разные сущности
+
 function imgPopupOpen(evt) {
-  const imgPopupImage = imgPopup.querySelector(".popup__image");
   imgPopupImage.setAttribute("src", evt.target.attributes.src.value);
   imgPopupImage.setAttribute("alt", evt.target.attributes.alt.value);
-
-  imgPopup.querySelector(
-    ".popup__img-subtitle"
-  ).textContent = evt.target.parentNode.querySelector(
+  imgPopupSubtile.textContent = evt.target.parentNode.querySelector(
     ".element__title"
   ).textContent;
-  popupDisplayToggle(imgPopup);
+  popupShow(imgPopup);
 }
 
-imgPopupCloseBttn.addEventListener("click", () => popupDisplayToggle(imgPopup));
+imgPopupCloseBttn.addEventListener("click", () => popupHide(imgPopup));
 
 function addOnClickClosePopupEvents() {
   const popupList = Array.from(document.querySelectorAll(".popup"));
   popupList.forEach((popup) => {
     popup.addEventListener("click", (evt) => {
       if (evt.currentTarget === evt.target) {
-        popupDisplayToggle(popup);
+        popupHide(popup);
       }
     });
   });
@@ -202,18 +200,22 @@ function addOnClickClosePopupEvents() {
 addOnClickClosePopupEvents();
 //#endregion
 
+Array.from(document.querySelectorAll(".popup__form")).forEach((form) => {
+  formValidatorMap.set(
+    form,
+    new FormValidator(form, {
+      formSelector: ".popup__form",
+      inputSelector: ".popup__input-text",
+      submitButtonSelector: ".popup__submit-button",
+      inputErrorClass: "popup__input-text_invalid",
+      errorClass: "popup__input-error_show",
+    })
+  );
+  formValidatorMap.get(form).enableValidation();
+});
+
 initialCards.forEach((el) => {
   elementsGrid.prepend(
     new Card(el, elementTemplateID, imgPopupOpen).renderCard()
   );
-});
-
-Array.from(document.querySelectorAll(".popup__form")).forEach((form) => {
-  new FormValidator(form, {
-    formSelector: ".popup__form",
-    inputSelector: ".popup__input-text",
-    submitButtonSelector: ".popup__submit-button",
-    inputErrorClass: "popup__input-text_invalid",
-    errorClass: "popup__input-error_show",
-  }).enableValidation();
 });

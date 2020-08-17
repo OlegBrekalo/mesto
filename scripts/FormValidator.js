@@ -32,11 +32,19 @@ export default class FormValidator {
     });
   }
 
+  setButtonDisable(bttn, disableFlag) {
+    if (disableFlag) {
+      bttn.setAttribute("disabled", true);
+    } else {
+      bttn.removeAttribute("disabled");
+    }
+  }
+
   _toggleFormButton(inputList, submitBttn) {
     if (this._isAllInputsValid(inputList)) {
-      submitBttn.setAttribute("disabled", true);
+      this.setButtonDisable(submitBttn, true);
     } else {
-      submitBttn.removeAttribute("disabled");
+      this.setButtonDisable(submitBttn, false);
     }
   }
 
@@ -45,18 +53,27 @@ export default class FormValidator {
       evt.preventDefault();
     });
 
-    const inputList = Array.from(
+    this._inputList = Array.from(
       this._form.querySelectorAll(this._formSelectors.inputSelector)
     );
-    const formButton = this._form.querySelector(
+    this._formButton = this._form.querySelector(
       this._formSelectors.submitButtonSelector
     );
 
-    inputList.forEach((input) => {
+    this._inputList.forEach((input) => {
       input.addEventListener("input", () => {
         this._checkingSelfValidity(input);
-        this._toggleFormButton(inputList, formButton);
+        this._toggleFormButton(this._inputList, this._formButton);
       });
+    });
+  }
+
+  initialazeForm() {
+    this._inputList.forEach((input) => {
+      input.classList.remove("popup__input-text_invalid");
+      input.parentNode
+        .querySelector(`#${input.id}-error`)
+        .classList.remove("popup__input-error_show");
     });
   }
 }
