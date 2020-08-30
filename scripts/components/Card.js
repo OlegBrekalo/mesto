@@ -1,13 +1,8 @@
 export default class Card {
-  constructor(cardContent, templateID, parentPopupOpenEvent) {
+  constructor(cardContent, handleCardClick) {
     this._cardContent = cardContent;
-    this._parentPopupOpenEvent = parentPopupOpenEvent;
-    this._templateID = templateID;
+    this._handleCardClick = handleCardClick;
   }
-
-  //По-хорошему для реализации полноценной инкапсуляции следовало с нуля описать parentPopupOpenEvent, но это дублирует уже существующий код
-  //Вопрос только в том во что мы упираемся сильнее в инкапсуляцию или DRY ?
-  //Пока я просто передаю уже существующую функцию и связываю её внутри
 
   _elementMockImgOnError(evt) {
     evt.target.src =
@@ -22,9 +17,9 @@ export default class Card {
     evt.target.parentNode.remove();
   }
 
-  _generateHTMLCard() {
+  generateDOMCard(templateID) {
     const newElement = document
-      .querySelector(this._templateID)
+      .querySelector(templateID)
       .content.cloneNode(true);
     const cardTitle = newElement.querySelector(".element__title");
     cardTitle.textContent = this._cardContent.name;
@@ -33,8 +28,10 @@ export default class Card {
     const cardImage = newElement.querySelector(".element__image");
     cardImage.setAttribute("alt", this._cardContent.imgAlt);
     cardImage.setAttribute("src", this._cardContent.img);
+
     cardImage.onerror = this._elementMockImgOnError;
-    cardImage.addEventListener("click", this._parentPopupOpenEvent);
+
+    cardImage.addEventListener("click", this._handleCardClick);
 
     newElement
       .querySelector(".element__like-icon")
@@ -44,9 +41,5 @@ export default class Card {
       .addEventListener("click", this._removeParent);
 
     return newElement;
-  }
-
-  renderCard() {
-    return this._generateHTMLCard();
   }
 }
