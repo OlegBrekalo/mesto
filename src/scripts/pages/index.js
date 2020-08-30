@@ -1,3 +1,5 @@
+import '../../pages/index.css';
+
 //#region import onstants
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
