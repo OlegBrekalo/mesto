@@ -17,10 +17,13 @@ export default class Card {
     evt.target.parentNode.remove();
   }
 
+  _getTemplate(templateID) {
+    return document.querySelector(templateID).content.cloneNode(true);
+  }
+
   generateDOMCard(templateID) {
-    const newElement = document
-      .querySelector(templateID)
-      .content.cloneNode(true);
+    const newElement = this._getTemplate(templateID);
+
     const cardTitle = newElement.querySelector(".element__title");
     cardTitle.textContent = this._cardContent.name;
     cardTitle.setAttribute("title", this._cardContent.name);

@@ -1,13 +1,7 @@
 import Popup from "./Popup.js";
 
-import { popupFormSelector, popupTextInput } from "../utils/constants.js";
-
 export default class PopupWithForm extends Popup {
-  constructor({
-    popupSelector,
-    formSelector = popupFormSelector,
-    inputSelector = popupTextInput,
-  }) {
+  constructor({ popupSelector, formSelector, inputSelector }) {
     super(popupSelector);
     this._inputs = Array.from(this._popup.querySelectorAll(inputSelector));
     this._popupForm = this._popup.querySelector(formSelector);
@@ -19,7 +13,7 @@ export default class PopupWithForm extends Popup {
     });
   }
 
-  close(){
+  close() {
     super.close();
     this._clear();
   }

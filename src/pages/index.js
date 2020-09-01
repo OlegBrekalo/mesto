@@ -1,12 +1,12 @@
-import '../../pages/index.css';
+import "./index.css";
 
-//#region import onstants
-import Card from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js";
-import Section from "../components/Section.js";
-import UserInfo from "../components/UserInfo.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import PopupWithImage from "../components/PopupWithImage.js";
+//#region import constants
+import Card from "../scripts/components/Card.js";
+import FormValidator from "../scripts/components/FormValidator.js";
+import Section from "../scripts/components/Section.js";
+import UserInfo from "../scripts/components/UserInfo.js";
+import PopupWithForm from "../scripts/components/PopupWithForm.js";
+import PopupWithImage from "../scripts/components/PopupWithImage.js";
 
 import {
   editPopupSelector,
@@ -17,7 +17,7 @@ import {
   editPopupSubmitBttn,
   editPopupNameID,
   editPopupAboutID,
-} from "../utils/constants.js";
+} from "../scripts/utils/constants.js";
 
 import {
   addPopupSelector,
@@ -26,13 +26,26 @@ import {
   addPopupSubmitBttn,
   addPopupNameID,
   addPopupSrcID,
-} from "../utils/constants.js";
+} from "../scripts/utils/constants.js";
 
-import { imgPopupSelector, imgPopupCloseBttn } from "../utils/constants.js";
+import {
+  imgPopupSelector,
+  imgPopupCloseBttn,
+  imgPopupImageSelector,
+  imgPopupSubtileSelector,
+} from "../scripts/utils/constants.js";
 
-import { elementsGridSelector, cardTemplateID } from "../utils/constants.js";
+import {
+  elementsGridSelector,
+  cardTemplateID,
+} from "../scripts/utils/constants.js";
 
-import { initialCards } from "../utils/constants.js";
+import {
+  popupFormSelector,
+  popupTextInput,
+} from "../scripts/utils/constants.js";
+
+import { initialCards } from "../scripts/utils/constants.js";
 
 const formValidatorMap = new Map();
 //#endregion
@@ -41,7 +54,11 @@ const userInfo = new UserInfo(".profile__name", ".profile__job");
 
 //#region Popups
 //editPopup
-const editPopup = new PopupWithForm({ popupSelector: editPopupSelector });
+const editPopup = new PopupWithForm({
+  popupSelector: editPopupSelector,
+  formSelector: popupFormSelector,
+  inputSelector: popupTextInput,
+});
 
 editPopup.setEventListeners({
   close: () => {
@@ -73,7 +90,11 @@ function editPopupOpen() {
 editPopupOpenBttn.addEventListener("click", editPopupOpen);
 
 //addPopup
-const addPopup = new PopupWithForm({ popupSelector: addPopupSelector });
+const addPopup = new PopupWithForm({
+  popupSelector: addPopupSelector,
+  formSelector: popupFormSelector,
+  inputSelector: popupTextInput,
+});
 
 addPopup.setEventListeners({
   close: () => {
@@ -105,7 +126,11 @@ function addPopupOpen() {
 addPopupOpenBttn.addEventListener("click", addPopupOpen);
 
 //imgPopup
-const imgPopup = new PopupWithImage({ popupSelector: imgPopupSelector });
+const imgPopup = new PopupWithImage({
+  popupSelector: imgPopupSelector,
+  popupImageSelector: imgPopupImageSelector,
+  popupSubtitleSelector: imgPopupSubtileSelector,
+});
 
 function imgPopupOpen(evt) {
   imgPopup.open({
