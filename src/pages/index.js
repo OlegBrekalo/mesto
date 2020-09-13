@@ -1,5 +1,5 @@
 //Webpack Moduls
-// import "./index.css";
+import "./index.css";
 
 //#region import constants
 import Card from "../scripts/components/Card.js";
