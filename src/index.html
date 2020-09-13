@@ -13,11 +13,13 @@
     </header>
     <main>
       <section class="profile content-section">
-        <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
+        <div class="profile__avatar-wrapper">
+          <img src="#" alt="Аватар" class="profile__avatar">
+        </div>
         <div class="profile__profile-info">
-          <h2 class="profile__name">Новый путешественик</h2>
+          <h2 class="profile__name"></h2>
           <button type="button" class="profile__edit-button"></button>
-          <p class="profile__job">Исследователь территорий</p>
+          <p class="profile__job"></p>
         </div>
         <button type="button" class="profile__add-button"></button>
       </section>
@@ -63,6 +65,28 @@
       </form>
     </div>
   </div>
+  <div class="popup-avatar popup">
+    <div class="popup__container popup__container_type_form">
+      <button type="button" class="popup__close-icon"></button>
+      <p class="popup__title">Обновить аватар</p>
+      <form class="popup__form" autocomplete="off">
+        <label class="popup__form-label">
+          <input id="avatar-form_src" name="avatar-form_src" type="url" required placeholder="Ссылка на аватар" class="popup__input-text avatar-form__input-text_type_src">
+          <span id="avatar-form_src-error" class="popup__input-error" ></span>
+        </label>
+        <button type="submit" class="popup__submit-button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup-delete-card popup">
+    <div class="popup__container popup__container_type_form">
+      <button type="button" class="popup__close-icon"></button>
+      <p class="popup__title">Вы уверены?</p>
+      <form class="popup__form" autocomplete="off">
+        <button type="submit" class="popup__submit-button">Да</button>
+      </form>
+    </div>
+  </div>
   <div class="popup-img popup">
     <div class="popup__container">
       <button type="button" class="popup__close-icon"></button>
@@ -76,7 +100,10 @@
       <img src="#" alt="#" class="element__image">
       <div class="element__footer">
         <h2 class="element__title" title=""></h2>
-        <button type="button" class="element__like-icon"></button>
+        <div class="element__like-block">
+          <button type="button" class="element__like-icon"></button>
+          <p class="element__like-couter"></p>
+        </div>
       </div>
     </li>
   </template>

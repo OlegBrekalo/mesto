@@ -1,6 +1,5 @@
 export default class Section {
-  constructor({ initItems, renderer }, containerSelector) {
-    this._initItems = initItems;
+  constructor(renderer, containerSelector) {
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
   }
@@ -13,9 +12,8 @@ export default class Section {
     this._renderNewElement(this._renderer(el));
   }
 
-  init() {
-    this._container.innerHTML = "";
-    this._initItems.forEach((el) => {
+  init(raws){
+    raws.reverse().forEach(el => {
       this.addNewElement(el);
     });
   }

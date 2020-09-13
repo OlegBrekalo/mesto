@@ -4,6 +4,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
 
+  visibility: hidden;
   position: absolute;
   top: 17px;
   right: 14px;

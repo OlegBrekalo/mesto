@@ -1,10 +1,11 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-  constructor({ popupSelector, formSelector, inputSelector }) {
+  constructor({ popupSelector, formSelector, inputSelector, submitSelector }) {
     super(popupSelector);
     this._inputs = Array.from(this._popup.querySelectorAll(inputSelector));
     this._popupForm = this._popup.querySelector(formSelector);
+    this.submitBttn = this._popup.querySelector(submitSelector);
   }
 
   clear() {
@@ -15,7 +16,7 @@ export default class PopupWithForm extends Popup {
 
   close() {
     super.close();
-    this._clear();
+    this.clear();
   }
 
   _getInputValues() {
@@ -26,8 +27,6 @@ export default class PopupWithForm extends Popup {
     return value;
   }
 
-  //В условии задачи было скзанно что коллбек сабмина следует помещать в конструктор
-  //Но тем не менее я считаю что лучше единобразно помещать и включать все ивенты в одной функции
   setEventListeners({ close, submit }) {
     super.setEventListeners(close);
     this._popupForm.addEventListener("submit", () => {

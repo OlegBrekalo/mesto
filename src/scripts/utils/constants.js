@@ -1,6 +1,7 @@
 //Глобальные переменные Popup
 export const popupFormSelector = ".popup__form";
 export const popupTextInput = ".popup__input-text";
+export const popupSubmitSelector = ".popup__submit-button";
 
 //Глобальные переменные editPopup
 export const editPopupSelector = ".popup-edit";
@@ -28,6 +29,16 @@ export const addPopupSubmitBttn = addPopupForm.querySelector(".popup__submit-but
 export const addPopupNameID = "add-form_name";
 export const addPopupSrcID = "add-form_src";
 
+////Глобальные переменные avatarPopup
+export const avatarPopupSelector = ".popup-avatar";
+export const avatarPopup = document.querySelector(avatarPopupSelector);
+export const avatarPopupOpenBttn = document.querySelector(".profile__avatar");
+export const avatarPopupForm = avatarPopup.querySelector(".popup__form");
+export const avatarPopupSubmitBttn = avatarPopupForm.querySelector(".popup__submit-button");
+export const avatarPopupSrcID = "avatar-form_src";
+
+export const deleteCardPopupSelector = ".popup-delete-card";
+
 //Глобальные переменные imgPopup
 export const imgPopupSelector = ".popup-img";
 export const imgPopupImageSelector = ".popup__image";
@@ -38,42 +49,3 @@ export const imgPopupSubtitleElementSelector = ".element__title";
 //Глобальные переменные отдельных карточек
 export const elementsGridSelector = ".elements__img-grid";
 export const cardTemplateID = "#template_element";
-
-export const initialCards = [
-  {
-    name: "Аляска, США",
-    img:
-      "https://images.unsplash.com/photo-1548181449-abc0791d2354?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80",
-    imgAlt: "Горная долина Аляска, США.",
-  },
-  {
-    name: "Сельяландсфосс, Исландия",
-    img:
-      "https://images.unsplash.com/photo-1585432615987-7f50eab32daa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-    imgAlt: "Водопад Сельяландсфосс, Исландия.",
-  },
-  {
-    name: "Пассо Ролле, Италия",
-    img:
-      "https://images.unsplash.com/photo-1535730480175-8f43dbb6f894?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-    imgAlt: "Перевал Пассо Ролле, Италия.",
-  },
-  {
-    name: "Лофотенские острова, Норвегия",
-    img:
-      "https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-    imgAlt: "Лофотенские острова, Норвегия.",
-  },
-  {
-    name: "Скалистые горы, Канада",
-    img:
-      "https://images.unsplash.com/photo-1489363855452-7327672b1608?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2134&q=80",
-    imgAlt: "Канадские Скалистые горы.",
-  },
-  {
-    name: "Гижгит, Кабардино-Балкарская Республика",
-    img:
-      "https://images.unsplash.com/photo-1572815117612-885a3e0288ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-    imgAlt: "Озеро Гижгит.",
-  },
-];
