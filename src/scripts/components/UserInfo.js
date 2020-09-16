@@ -44,7 +44,7 @@ export default class UserInfo {
   }
 
   initUser() {
-    this._initUserInfo()
+    return this._initUserInfo()
       .then((userJSON) => {
         this._setUserInfoinDOM(userJSON.name, userJSON.about);
         this._setUserAvatarinDOM(userJSON.avatar);
@@ -55,8 +55,7 @@ export default class UserInfo {
       });
   }
 
-  checkCardOwnership(ownerCardId){
-    return (this._id === ownerCardId);
+  checkCardOwnership(ownerCardId) {
+    return this._id === ownerCardId;
   }
-
 }

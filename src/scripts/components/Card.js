@@ -25,17 +25,25 @@ export default class Card {
   }
 
   _putLike(target) {
-    this._putLikeOnServer(this._id).then((cardJSON) => {
-      target.classList.add("element__like-icon_checked");
-      this._setLikeCount(cardJSON.likes);
-    });
+    this._putLikeOnServer(this._id)
+      .then((cardJSON) => {
+        target.classList.add("element__like-icon_checked");
+        this._setLikeCount(cardJSON.likes);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   _removeLike(target) {
-    this._removeLikeOnServer(this._id).then((cardJSON) => {
-      target.classList.remove("element__like-icon_checked");
-      this._setLikeCount(cardJSON.likes);
-    });
+    this._removeLikeOnServer(this._id)
+      .then((cardJSON) => {
+        target.classList.remove("element__like-icon_checked");
+        this._setLikeCount(cardJSON.likes);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   _elementLikeToggle(evt) {
@@ -97,13 +105,6 @@ export default class Card {
     }
 
     return newElement;
-  }
-
-  postSelfOnServer() {
-    this._postOnServer(cardContent.name, cardContent.link).then((cardJSON) => {
-      console.log(cardJSON.name + " " + cardJSON.link);
-      return Promise.resolve;
-    });
   }
 
   deleteSelf(parentNode) {

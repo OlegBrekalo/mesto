@@ -124,12 +124,12 @@ editPopup.setEventListeners({
         name: data[editPopupNameID],
         about: data[editPopupAboutID],
       })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
+      .then(() => {
         editPopup.close();
         removeOldLoadingText(editPopup.submitBttn, oldText);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
 });
@@ -171,12 +171,12 @@ addPopup.setEventListeners({
           new Card(cardJSON, cardHandlerCallbacks, cardAPICallbacks)
         );
       })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
+      .then(() => {
         addPopup.close();
         removeOldLoadingText(addPopup.submitBttn, oldText);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
 });
@@ -207,12 +207,12 @@ avatarPopup.setEventListeners({
     const oldText = setLoadingText(avatarPopup.submitBttn);
     userInfo
       .setNewAvatar(data[avatarPopupSrcID])
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
+      .then(() => {
         avatarPopup.close();
         removeOldLoadingText(avatarPopup.submitBttn, oldText);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
 });
@@ -245,12 +245,12 @@ deleteCardPopup.setEventListeners({
     const oldText = setLoadingText(deleteCardPopup.submitBttn, "Удаляю...");
     deleteCardPopup.deletedCard
       .deleteSelf(deleteCardPopup.parentNode)
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
+      .then(() => {
         deleteCardPopup.close();
         removeOldLoadingText(deleteCardPopup.submitBttn, oldText);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   },
 });
@@ -305,16 +305,18 @@ Array.from(document.querySelectorAll(".popup__form")).forEach((form) => {
   formValidatorMap.get(form).enableValidation();
 });
 
-userInfo.initUser();
-
 const cardsSection = new Section((card) => {
   return card.generateDOMCard(cardTemplateID);
 }, elementsGridSelector);
 
-api.getCards().then((cardsJSON) => {
-  cardsSection.init(
-    cardsJSON.map((cardJSON) => {
-      return new Card(cardJSON, cardHandlerCallbacks, cardAPICallbacks);
-    })
-  );
-});
+Promise.all([userInfo.initUser(), api.getCards()])
+  .then((cardsJSON) => {
+    cardsSection.init(
+      cardsJSON[1].map((cardJSON) => {
+        return new Card(cardJSON, cardHandlerCallbacks, cardAPICallbacks);
+      })
+    );
+  })
+  .catch( (err) =>{
+    console.log(err);
+  });
