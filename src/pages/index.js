@@ -126,10 +126,12 @@ editPopup.setEventListeners({
       })
       .then(() => {
         editPopup.close();
-        removeOldLoadingText(editPopup.submitBttn, oldText);
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally( ()=>{
+        removeOldLoadingText(editPopup.submitBttn, oldText);
       });
   },
 });
@@ -173,10 +175,12 @@ addPopup.setEventListeners({
       })
       .then(() => {
         addPopup.close();
-        removeOldLoadingText(addPopup.submitBttn, oldText);
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally( ()=>{
+        removeOldLoadingText(addPopup.submitBttn, oldText);
       });
   },
 });
@@ -209,10 +213,12 @@ avatarPopup.setEventListeners({
       .setNewAvatar(data[avatarPopupSrcID])
       .then(() => {
         avatarPopup.close();
-        removeOldLoadingText(avatarPopup.submitBttn, oldText);
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally( ()=>{
+        removeOldLoadingText(avatarPopup.submitBttn, oldText);
       });
   },
 });
@@ -247,10 +253,12 @@ deleteCardPopup.setEventListeners({
       .deleteSelf(deleteCardPopup.parentNode)
       .then(() => {
         deleteCardPopup.close();
-        removeOldLoadingText(deleteCardPopup.submitBttn, oldText);
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally( ()=>{
+        removeOldLoadingText(deleteCardPopup.submitBttn, oldText);
       });
   },
 });
@@ -310,9 +318,10 @@ const cardsSection = new Section((card) => {
 }, elementsGridSelector);
 
 Promise.all([userInfo.initUser(), api.getCards()])
-  .then((cardsJSON) => {
+  .then((data) => {
+    const [userData, initialCards] = data;
     cardsSection.init(
-      cardsJSON[1].map((cardJSON) => {
+      initialCards.map((cardJSON) => {
         return new Card(cardJSON, cardHandlerCallbacks, cardAPICallbacks);
       })
     );
